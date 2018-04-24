@@ -4,10 +4,28 @@
   "description": "An example LINE bot just to echo messages",
   "main": "index.js",
   "scripts": {
-    "start": "node ."
+    "start": "node .",
+    "pretest": "npm run build",
+    "test": "API_BASE_URL=http://localhost:1234/ TEST_PORT=1234 TS_NODE_CACHE=0 mocha -r ts-node/register test/*.spec.ts",
+    "prettier": "prettier --parser typescript --trailing-comma all \"{lib,test}/**/*.ts\"",
+    "format": "npm run prettier -- --write",
+    "format:check": "npm run prettier -- -l",
+    "clean": "del-cli dist",
+    "prebuild": "npm run format:check && npm run clean",
+    "build": "tsc",
+	"docs": "gitbook install && gitbook serve docs",
+    "docs:publish": "./docs/publish.sh",
+    "release": "npm run build && npm publish --access public",
+    "precommit": "npm run format:check",
+    "prepush": "npm run format:check && npm run build && npm run test"
   },
   "dependencies": {
     "@line/bot-sdk": "^5.2.0",
-    "express": "^4.16.3"
+    "del-cli": "^1.1.0",
+    "express": "^4.16.3",
+    "prettier": "^1.12.1"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3.1.3"
   }
 }

@@ -1,0 +1,37 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   '--no-cache' ]
+2 info using npm@5.6.0
+3 info using node@v8.11.1
+4 verbose npm-session 77e009f2f83d9446
+5 silly install runPreinstallTopLevelLifecycles
+6 silly install loadCurrentTree
+7 silly install readLocalPackageData
+8 verbose stack Error: Failed to parse json
+8 verbose stack Unexpected string in JSON at position 612 while parsing '{
+8 verbose stack   "name": "line-bot",
+8 verbose stack   "version": "0.'
+8 verbose stack     at parseError (C:\Program Files\nodejs\node_modules\npm\node_modules\read-package-json\read-json.js:436:11)
+8 verbose stack     at parseJson (C:\Program Files\nodejs\node_modules\npm\node_modules\read-package-json\read-json.js:104:26)
+8 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\read-package-json\read-json.js:51:5
+8 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\graceful-fs\graceful-fs.js:78:16
+8 verbose stack     at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:511:3)
+9 verbose cwd C:\Users\580009\Documents\GitHub\line-bot
+10 verbose Windows_NT 10.0.15063
+11 verbose argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "--no-cache"
+12 verbose node v8.11.1
+13 verbose npm  v5.6.0
+14 error file C:\Users\580009\Documents\GitHub\line-bot\package.json
+15 error code EJSONPARSE
+16 error Failed to parse json
+16 error Unexpected string in JSON at position 612 while parsing '{
+16 error   "name": "line-bot",
+16 error   "version": "0.'
+17 error File: C:\Users\580009\Documents\GitHub\line-bot\package.json
+18 error Failed to parse package.json data.
+18 error package.json must be actual JSON, not just JavaScript.
+18 error
+18 error Tell the package author to fix their package.json file. JSON.parse
+19 verbose exit [ 1, true ]
