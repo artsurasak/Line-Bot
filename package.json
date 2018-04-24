@@ -13,7 +13,7 @@
     "clean": "del-cli dist",
     "prebuild": "npm run format:check && npm run clean",
     "build": "tsc",
-	"docs": "gitbook install && gitbook serve docs",
+    "docs": "gitbook install && gitbook serve docs",
     "docs:publish": "./docs/publish.sh",
     "release": "npm run build && npm publish --access public",
     "precommit": "npm run format:check",
@@ -23,6 +23,7 @@
     "@line/bot-sdk": "^5.2.0",
     "del-cli": "^1.1.0",
     "express": "^4.16.3",
+    "mssql": "^4.1.0",
     "prettier": "^1.12.1"
   },
   "devDependencies": {
