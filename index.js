@@ -1,49 +1,26 @@
-'use strict';
+var express = require('express')
+var bodyParser = require('body-parser')
+var app = express()
+var http = require('http');
+var server = http.createServer(app);
+var cors = require('cors')
 
-const line = require('@line/bot-sdk');
-const express = require('express');
+app.use(cors())
+app.use(bodyParser.json())
 
-// create LINE SDK config from env variables
-const config = {
-  channelAccessToken: 'wNGFPyRYMYL1ZuaxZBZN+gw/1FOMR52WrEGtybbWfLlXsyIJU+2NUrUB70DQzT1ID4Jhwh34P4mc3fFdIEI7rtjUToiUzOlxjmtEfS/mekbd01VYgAYZybnHi9y0Q3REK0oaVFJricEwTEehEYaOGgdB04t89/1O/w1cDnyilFU=',
-  channelSecret: '553bc1a177fb9b042fa30b3544357169',
-};
+app.set('port', (process.env.PORT || 4000))
+app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.json())
 
-// create LINE SDK client
-const client = new line.Client(config);
 
-// create Express app
-// about Express itself: https://expressjs.com/
-const app = express();
+app.get('/', function (req, res) {
+  res.send('Hello')
+})
 
-// register a webhook handler with middleware
-// about the middleware, please refer to doc
-app.post('/callback', line.middleware(config), (req, res) => {
-  Promise
-    .all(req.body.events.map(handleEvent))
-    .then((result) => res.json(result))
-    .catch((err) => {
-      console.error(err);
-      res.status(500).end();
-    });
-});
+/*
+app.listen(app.get('port'), function () {
+  console.log('run at port', app.get('port'))
+})*/
 
-// event handler
-function handleEvent(event) {
-  if (event.type !== 'message' || event.message.type !== 'text') {
-    // ignore non-text-message event
-    return Promise.resolve(null);
-  }
-
-  // create a echoing text message
-  const echo = { type: 'text', text: event.message.text };
-
-  // use reply API
-  return client.replyMessage(event.replyToken, echo);
-}
-
-// listen on port
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`listening on ${port}`);
-});
+server.listen(4000,function(){
+console.log("server listen at localhost:4000");});

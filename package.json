@@ -21,8 +21,10 @@
   },
   "dependencies": {
     "@line/bot-sdk": "^5.2.0",
+    "cors": "^2.8.4",
     "del-cli": "^1.1.0",
     "express": "^4.16.3",
+    "http": "0.0.0",
     "mssql": "^4.1.0",
     "prettier": "^1.12.1"
   },
